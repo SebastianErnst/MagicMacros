@@ -7,11 +7,15 @@ function Paladin_OneButtonProtection()
     if GetPlayerBuffApplications(buffIndex) == 3 then
         Paladin_SmartCrusaderStrike()
     else
-        CastSpellByName("Crusader Strike")
+        CastSpellByName("Holy Strike")
     end
 
     CastSpellByName("Holy Shield")
     Paladin_SoR()
-    CastSpellByName("Consecration")
+
+    if combat_isTextureNameInRange("INV_Sword_01") then
+        CastSpellByName("Consecration")
+    end
+
     CastSpellByName("Greater Blessing of Sanctuary")
 end
