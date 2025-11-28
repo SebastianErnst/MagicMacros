@@ -1,10 +1,16 @@
 function Hunter:OneButtonHunterPetPullReset()
-    CastSpellByName("Furious Howl")
+    local furiousHowl = Abilities:new("Furious Howl")
+    local feignDeath = Abilities:new("Feign Death")
+
+    furiousHowl:cast()
+
     if UnitExists("pet") and not UnitIsDead("pet") then
-        if Buffs:findBuffByTextureName("Ability_Rogue_FeignDeath") then
+        if feignDeath:isBuffed() then
             CastSpellByName("Eyes of the Beast")
         end
-        CastSpellByName("Feign Death")
+        if furiousHowl:isBuffed() then
+            feignDeath:cast()
+        end
     end
     CastSpellByName("Call Pet")
     CastSpellByName("Revive Pet")

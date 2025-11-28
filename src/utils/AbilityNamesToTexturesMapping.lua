@@ -7,4 +7,6 @@ AbilityNamesToTexturesMapping = {
     ["Judgement"] = "Spell_Holy_RighteousFury",
     ["Seal of Righteousness"] = "Ability_ThunderBolt",
     ["Seal of Wisdom"] = "Spell_Holy_RighteousnessAura",
+    ["Furious Howl"] = "Ability_Hunter_Pet_Wolf",
+    ["Feign Death"] = "Ability_Rogue_FeignDeath"
 }
