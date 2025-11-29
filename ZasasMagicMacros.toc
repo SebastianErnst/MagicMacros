@@ -13,6 +13,10 @@ src\utils\Slots.lua
 src\utils\Abilities.lua
 src\utils\ZMM_MacroBuilder.lua
 
+# === Shaman ===
+src\classes\shaman\Core.lua
+src\classes\shaman\OneButtonEnhSingleTarget.lua
+
 # === Hunter ===
 src\classes\hunter\Core.lua
 src\classes\hunter\OneButtonHunterPetPullReset.lua
