@@ -1,5 +1,6 @@
-function Hunter:OneButtonHunterPetPullReset()
-    local furiousHowl = Buff:new("Furious Howl")
+function Hunter:OneButtonPetPullReset()
+    local furiousHowl = Spell:new("Furious Howl")
+    local furiousHowlBuff = Buff:new("Furious Howl")
     local feignDeath = Spell:new("Feign Death")
     local feignDeathBuff = Buff:new("Feign Death")
 
@@ -9,7 +10,7 @@ function Hunter:OneButtonHunterPetPullReset()
         if feignDeathBuff:isBuffed() then
             CastSpellByName("Eyes of the Beast")
         end
-        if furiousHowl:isBuffed() then
+        if furiousHowlBuff:isBuffed() then
             feignDeath:cast()
         end
     end
