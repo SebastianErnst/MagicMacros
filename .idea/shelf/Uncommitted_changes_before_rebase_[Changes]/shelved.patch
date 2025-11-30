@@ -1,0 +1,54 @@
+Index: utils/combat.lua
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>function combat_StartAutoAttack()\r\n    if (not PlayerFrame.inCombat) then\r\n        AttackTarget()\r\n    end\r\nend
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/combat.lua b/utils/combat.lua
+--- a/utils/combat.lua	(revision 06f162f6782dd76a2040b11f244c3ce4ff0f190a)
++++ b/utils/combat.lua	(date 1764015326135)
+@@ -2,4 +2,19 @@
+     if (not PlayerFrame.inCombat) then
+         AttackTarget()
+     end
+-end
+\ No newline at end of file
++end
++
++function combat_isTextureNameInRange(textureName)
++    for i = 1, 172 do
++        local isSameTexture = strfind(GetActionTexture(i), textureName)
++        if isSameTexture then
++            if IsActionInRange(i) == 1 then
++                return true
++            else
++                return false
++            end
++        end
++    end
++
++    return false
++end
+Index: utils/debuffs.lua
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/debuffs.lua b/utils/debuffs.lua
+new file mode 100644
+--- /dev/null	(date 1764020955744)
++++ b/utils/debuffs.lua	(date 1764020955744)
+@@ -0,0 +1,11 @@
++function buffs_findDebuffByTextureName(textureName)
++    local i = 1
++    while UnitDebuff("target", i) do
++        local isSameTexture = strfind(UnitDebuff("target", i), textureName)
++        print(isSameTexture)
++        if isSameTexture then
++            return i
++        end
++        i = i + 1
++    end
++end
+\ No newline at end of file

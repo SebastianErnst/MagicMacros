@@ -1,4 +1,5 @@
 Combat = {}
+Combat.__index = Combat
 
 function Combat:startAutoAttack()
     ---@diagnostic disable-next-line: undefined-global

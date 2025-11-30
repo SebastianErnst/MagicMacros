@@ -1,0 +1,83 @@
+Index: ZasasMagicMacros.toc
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## Interface: 11200\r\n## Title: ZasasMagicMacros\r\n## Author: Zasamel\r\n## Version: 1.0.3\r\n## Notes: Magical Macros!\r\n\r\n# === Utils ===\r\nsrc\\utils\\AbilityNamesToTexturesMapping.lua\r\nsrc\\utils\\Buffs.lua\r\nsrc\\utils\\Debuffs.lua\r\nsrc\\utils\\Combat.lua\r\nsrc\\utils\\Slots.lua\r\nsrc\\utils\\Abilities.lua\r\nsrc\\utils\\ZMM_MacroBuilder.lua\r\n\r\n# === Shaman ===\r\nsrc\\classes\\shaman\\Core.lua\r\nsrc\\classes\\shaman\\OneButtonEnhSingleTarget.lua\r\n\r\n# === Hunter ===\r\nsrc\\classes\\hunter\\Core.lua\r\nsrc\\classes\\hunter\\OneButtonHunterPetPullReset.lua\r\n\r\n# === Paladin ===\r\nsrc\\classes\\paladin\\Core.lua\r\nsrc\\classes\\paladin\\SealOfRighteousness.lua\r\nsrc\\classes\\paladin\\SealOfWisdom.lua\r\nsrc\\classes\\paladin\\SmartCrusaderStrike.lua\r\nsrc\\classes\\paladin\\OneButtonProtection.lua\r\nsrc\\classes\\paladin\\OneButtonProtectionAoE.lua
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ZasasMagicMacros.toc b/ZasasMagicMacros.toc
+--- a/ZasasMagicMacros.toc	(revision 7d428dd3ffc89c68f1d248c3280048dee661a4d9)
++++ b/ZasasMagicMacros.toc	(date 1764447416503)
+@@ -1,30 +1,48 @@
+ ## Interface: 11200
+ ## Title: ZasasMagicMacros
++## Notes: Magic one-button macros :)
+ ## Author: Zasamel
+ ## Version: 1.0.3
+-## Notes: Magical Macros!
++
++# 1) Core
++src\core\Core.lua
++
++# 2) Utils
++src\modules\Utils\Utils.lua
++src\modules\Utils\NamesToTexturesMapping.lua
++
++# 3) Modules
++src\modules\AuraTracker.lua
++src\modules\Combat.lua
++src\modules\NamesToTexturesMapping.lua
++src\modules\Slot.lua
++src\modules\Spell.lua
++src\modules\Timer.lua
++src\modules\Timers.lua
++src\modules\Utils.lua
++
+ 
+-# === Utils ===
+-src\utils\AbilityNamesToTexturesMapping.lua
+-src\utils\Buffs.lua
+-src\utils\Debuffs.lua
+-src\utils\Combat.lua
+-src\utils\Slots.lua
+-src\utils\Abilities.lua
+-src\utils\ZMM_MacroBuilder.lua
++# 4) Frames
++src\frames\ZMM_MacroBuilder.lua
+ 
+-# === Shaman ===
+-src\classes\shaman\Core.lua
+-src\classes\shaman\OneButtonEnhSingleTarget.lua
++# 5) Klassen-Rotations
+ 
+-# === Hunter ===
+-src\classes\hunter\Core.lua
+-src\classes\hunter\OneButtonHunterPetPullReset.lua
++# 5.1) Hunter
++src\rotations\hunter\Core.lua
++src\rotations\hunter\OneButtonHunterPetPullReset.lua
+ 
+-# === Paladin ===
+-src\classes\paladin\Core.lua
+-src\classes\paladin\SealOfRighteousness.lua
+-src\classes\paladin\SealOfWisdom.lua
+-src\classes\paladin\SmartCrusaderStrike.lua
+-src\classes\paladin\OneButtonProtection.lua
+-src\classes\paladin\OneButtonProtectionAoE.lua
+\ No newline at end of file
++# 5.2) Paladin
++src\rotations\paladin\Core.lua
++src\rotations\paladin\OneButtonProtection.lua
++src\rotations\paladin\OneButtonProtectionAoE.lua
++src\rotations\paladin\SealOfRighteousness.lua
++src\rotations\paladin\SealOfWisdom.lua
++src\rotations\paladin\SmartCrusaderStrike.lua
++
++# 5.3) Shaman
++src\rotations\shaman\Core.lua
++src\rotations\shaman\OneButtonEnhSingleTarget.lua
++
++# 5.4) Warrior
++src\rotations\warrior\Core.lua
++src\rotations\warrior\Warrior_HeroicStrikeQueue.lua
+\ No newline at end of file
