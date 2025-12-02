@@ -2,19 +2,13 @@ Buff = {}
 Buff.__index = Buff
 
 function Buff:new(name)
-    function getBuffIndexByTextureName(textureName)
-        local i = 0
-        while GetPlayerBuff(i) >= 0 do
+    local function getBuffIndexByTextureName(textureName)
+        for i = 1, 32 do
             if strfind(GetPlayerBuffTexture(i), textureName) then
                 return i
             end
-            i = i + 1
         end
         return -1
-    end
-
-    function findBuffByTextureName(textureName)
-        return self:getBuffIndexByTextureName(textureName) > -1
     end
 
     local textureName = NamesToTexturesMapping[name]
@@ -24,24 +18,20 @@ function Buff:new(name)
 
     local public = {}
 
-    function public:getBuffIndex()
+    function public:getIndex()
         return buffIndex
     end
 
-    function public:getBuffApplications()
+    function public:getStacks()
         return buffApplications
     end
 
-    function public.getBuffTimeLeft()
+    function public.getTimeLeft()
         return buffTimeLeft
     end
 
     function public.isBuffed()
-        if buffIndex >= 0 then
-            return true
-        end
-
-        return false
+        return buffIndex >= 0
     end
 
     return public

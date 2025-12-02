@@ -36,12 +36,12 @@ function Utils:printSpellbookSpell()
     for i = 1, 172 do
         if GetSpellName(i, BOOKTYPE_SPELL) then
             local name, _, spellId = GetSpellName(i, BOOKTYPE_SPELL)
-            if currentName == "" then
+            if currentName == "" and name and spellId then
                 currentName = name
                 currentSpellId = spellId
             end
 
-            if currentName ~= name then
+            if currentName ~= name and name and spellId then
                 local _, _, currentTexture = SpellInfo(currentSpellId)
                 currentTexture = Utils:stringSplit(currentTexture, "\\")[3]
                 output = output .. "[\"" .. currentName .. "\"] = \"" .. currentTexture .. "\",\n"
@@ -53,12 +53,12 @@ function Utils:printSpellbookSpell()
     for i = 1, 172 do
         if GetSpellName(i, BOOKTYPE_PET) then
             local name, _, spellId = GetSpellName(i, BOOKTYPE_PET)
-            if currentName == "" then
+            if currentName == "" and name and spellId then
                 currentName = name
                 currentSpellId = spellId
             end
 
-            if currentName ~= name then
+            if currentName ~= name and name and spellId then
                 local _, _, currentTexture = SpellInfo(currentSpellId)
                 currentTexture = Utils:stringSplit(currentTexture, "\\")[3]
                 output = output .. "[\"" .. currentName .. "\"] = \"" .. currentTexture .. "\",\n"

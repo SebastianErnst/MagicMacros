@@ -1,11 +1,11 @@
 Paladin = Paladin or {}
 
 function Paladin:OneButtonProtectionAoE()
-    local crusaderStrike = Abilities:new("Crusader Strike")
-    local holyStrike = Abilities:new("Holy Strike")
-    local holyShield = Abilities:new("Holy Shield")
-    local consecration = Abilities:new("Consecration")
-    local greaterBlessingOfSanctuary = Abilities:new("Greater Blessing of Sanctuary")
+    local crusaderStrike = Spell:new("Crusader Strike")
+    local holyStrike = Spell:new("Holy Strike")
+    local holyShield = Spell:new("Holy Shield")
+    local consecration = Spell:new("Consecration")
+    local greaterBlessingOfSanctuary = Spell:new("Greater Blessing of Sanctuary")
 
     Combat:startAutoAttack()
 
