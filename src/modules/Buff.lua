@@ -30,9 +30,10 @@ function Buff:new(name)
         return buffTimeLeft
     end
 
-    function public.isBuffed()
+    function public.isActive()
         return buffIndex >= 0
     end
+    
 
     return public
 end

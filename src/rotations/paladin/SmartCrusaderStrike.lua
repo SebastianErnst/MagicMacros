@@ -3,11 +3,11 @@ function Paladin:SmartCrusaderStrike()
     local zeal = Buff:new("Zeal")
     local holyStrike = Spell:new("Holy Strike")
 
-    if not zeal:isBuffed() then
+    if not zeal:isActive() then
         crusaderStrike:cast()
     end
 
-    if zeal:isBuffed() and (zeal:getBuffTimeLeft() < 7 or zeal:getBuffApplications() < 3) then
+    if zeal:isActive() and (zeal:getBuffTimeLeft() < 7 or zeal:getBuffApplications() < 3) then
         crusaderStrike:cast()
     else
         holyStrike:cast()

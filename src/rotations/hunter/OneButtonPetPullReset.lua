@@ -7,10 +7,10 @@ function Hunter:OneButtonPetPullReset()
     furiousHowl:cast()
 
     if UnitExists("pet") and not UnitIsDead("pet") then
-        if feignDeathBuff:isBuffed() then
+        if feignDeathBuff:isActive() then
             CastSpellByName("Eyes of the Beast")
         end
-        if furiousHowlBuff:isBuffed() then
+        if furiousHowlBuff:isActive() then
             feignDeath:cast()
         end
     end

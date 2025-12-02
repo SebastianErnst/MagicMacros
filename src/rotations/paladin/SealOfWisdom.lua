@@ -4,8 +4,8 @@ function Paladin:SealOfWisdom()
     local sealOfWidsomBuff = Buff:new("Seal of Wisdom")
     local sealOfWidsomDebuff = Debuff:new("Seal of Wisdom")
 
-    if sealOfWidsomBuff:isBuffed() then
-        if not sealOfWidsomDebuff:isDebuffed() then
+    if sealOfWidsomBuff:isActive() then
+        if not sealOfWidsomDebuff:isActive() then
             judgement:cast()
         end
     else

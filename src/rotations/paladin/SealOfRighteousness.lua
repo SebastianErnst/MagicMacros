@@ -3,7 +3,7 @@ function Paladin:SealOfRighteousness()
     local sealOfRighteousness = Spell:new("Seal of Righteousness")
     local sealOfRighteousnessBuff = Buff:new("Seal of Righteousness")
 
-    if sealOfRighteousnessBuff:isBuffed() then
+    if sealOfRighteousnessBuff:isActive() then
         judgement:cast()
     else
         sealOfRighteousness:cast()

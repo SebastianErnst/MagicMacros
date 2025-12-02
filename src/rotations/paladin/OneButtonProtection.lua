@@ -24,7 +24,7 @@ function Paladin:OneButtonProtection()
 
     holyShield:cast()
 
-    if sealOfRighteousnessBuff:isBuffed() then
+    if sealOfRighteousnessBuff:isActive() then
         judgement:cast()
     else
         sealOfRighteousness:cast()
