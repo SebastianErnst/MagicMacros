@@ -3,6 +3,7 @@ Spell.__index = Spell
 
 function Spell:new(name)
     local textureName = NamesToTexturesMapping[name]
+    local slotId = Slot:findSlotIndexByTextureName(textureName)
     local public = {}
 
     function public:getTextureName()
@@ -13,19 +14,20 @@ function Spell:new(name)
         CastSpellByName(name)
     end
 
+    function public:getCooldown()
+        local startTime, duration = GetActionCooldown(slotId)
+        local cooldown = startTime - GetTime() + duration
+
+        return cooldown
+    end
+
     function public:isInRange()
-        for i = 1, 172 do
-            if GetActionTexture(i) then
-                local isSameTexture = strfind(GetActionTexture(i), textureName)
-                if isSameTexture then
-                    if IsActionInRange(i) == 1 then
-                        return true
-                    else
-                        return false
-                    end
-                end
-            end
+        if IsActionInRange(slotId) == 1 then
+            return true
+        else
+            return false
         end
+
 
         return false
     end

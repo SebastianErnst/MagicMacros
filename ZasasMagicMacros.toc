@@ -31,6 +31,7 @@ src\rotations\hunter\OneButtonPetPullReset.lua
 src\rotations\paladin\Core.lua
 src\rotations\paladin\OneButtonProtection.lua
 src\rotations\paladin\OneButtonProtectionAoE.lua
+src\rotations\paladin\OneButtonProtectionAoeFarm.lua
 src\rotations\paladin\SealOfRighteousness.lua
 src\rotations\paladin\SealOfWisdom.lua
 src\rotations\paladin\SmartCrusaderStrike.lua
