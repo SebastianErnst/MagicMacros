@@ -19,6 +19,8 @@ src\modules\Combat.lua
 src\modules\Debuff.lua
 src\modules\Slot.lua
 src\modules\Spell.lua
+src\modules\Timer.lua
+src\modules\Timers.lua
 src\modules\Utils.lua
 
 # === Classes ===
@@ -40,3 +42,7 @@ src\rotations\paladin\SmartCrusaderStrike.lua
 src\rotations\warrior\Core.lua
 src\rotations\warrior\OneButtonFuryProt.lua
 src\rotations\warrior\OneButtonProt.lua
+
+# === Warlock ===
+src\rotations\warlock\Core.lua
+src\rotations\warlock\Corruption.lua
