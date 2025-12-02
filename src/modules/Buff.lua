@@ -4,7 +4,7 @@ Buff.__index = Buff
 function Buff:new(name)
     local function getBuffIndexByTextureName(textureName)
         for i = 1, 32 do
-            if strfind(GetPlayerBuffTexture(i), textureName) then
+            if GetPlayerBuffTexture(i) and strfind(GetPlayerBuffTexture(i), textureName) then
                 return i
             end
         end
@@ -33,7 +33,6 @@ function Buff:new(name)
     function public.isActive()
         return buffIndex >= 0
     end
-    
 
     return public
 end
