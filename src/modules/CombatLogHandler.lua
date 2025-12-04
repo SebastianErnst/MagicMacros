@@ -10,29 +10,87 @@ local PATTERN_DEBUFF_APPLIED_TARGET = "^(.+) suffers (%d+) (.+) damage from your
 function CombatLogHandler:new()
     local combatLogFrame = CreateFrame("Frame")
     local events = {
-        -- Selfbuff anything but buffs than were still on you (except if you gained a stack)
-        "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS",
-        -- Selfbuff fades (also dispelled?
-        "CHAT_MSG_SPELL_AURA_GONE_SELF",
-        -- Heal
-        "CHAT_MSG_SPELL_SELF_BUFF",
-        -- All dot DMG (all sources) vs mobs
-        -- "CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE",
-        -- All dot DMG (all sources) vs player
-        "CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_DAMAGE",
-        -- Any dot wearing off
-        "CHAT_MSG_SPELL_AURA_GONE_OTHER",
+        ['CHAT_MSG_COMBAT_PET_HITS'] = true,
+        ['CHAT_MSG_COMBAT_PET_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_SELF_HITS'] = true,
+        ['CHAT_MSG_COMBAT_SELF_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_CREATURE_HITS'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_CREATURE_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_PARTY_HITS'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_PARTY_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_SELF_HITS'] = true,
+        ['CHAT_MSG_COMBAT_CREATURE_VS_SELF_MISSES'] = true,
+        -- ['CHAT_MSG_COMBAT_FRIENDLYPLAYER_HITS'] = true,
+        -- ['CHAT_MSG_COMBAT_FRIENDLYPLAYER_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_HOSTILEPLAYER_HITS'] = true,
+        ['CHAT_MSG_COMBAT_HOSTILEPLAYER_MISSES'] = true,
+        ['CHAT_MSG_COMBAT_PARTY_HITS'] = true,
+        ['CHAT_MSG_COMBAT_PARTY_MISSES'] = true,
+        ['CHAT_MSG_SPELL_PET_BUFF'] = true,
+        ['CHAT_MSG_SPELL_PET_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_SELF_BUFF'] = true,
+        ['CHAT_MSG_SPELL_SELF_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_CREATURE_BUFF'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_CREATURE_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_PARTY_BUFF'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_PARTY_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_SELF_BUFF'] = true,
+        ['CHAT_MSG_SPELL_CREATURE_VS_SELF_DAMAGE'] = true,
+        -- ['CHAT_MSG_SPELL_FRIENDLYPLAYER_BUFF'] = true,
+        -- ['CHAT_MSG_SPELL_FRIENDLYPLAYER_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_HOSTILEPLAYER_BUFF'] = true,
+        ['CHAT_MSG_SPELL_HOSTILEPLAYER_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_PARTY_BUFF'] = true,
+        ['CHAT_MSG_SPELL_PARTY_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_SELF_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_DAMAGESHIELDS_ON_OTHERS'] = true,
+        ['CHAT_MSG_SPELL_DAMAGESHIELDS_ON_SELF'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE'] = true,
+        -- ['CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_BUFFS'] = true,
+        -- ['CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_BUFFS'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_PARTY_BUFFS'] = true,
+        ['CHAT_MSG_SPELL_PERIODIC_PARTY_DAMAGE'] = true,
+        ['CHAT_MSG_SPELL_AURA_GONE_OTHER'] = true,
+        ['CHAT_MSG_SPELL_AURA_GONE_SELF'] = true,
+        ['CHAT_MSG_SPELL_AURA_GONE_PARTY'] = true,
+        ['CHAT_MSG_SPELL_BREAK_AURA'] = true,
+        -- ['CHAT_MSG_COMBAT_FRIENDLY_DEATH'] = true,
+        ['CHAT_MSG_COMBAT_HOSTILE_DEATH'] = true,
+        ['CHAT_MSG_SPELL_ITEM_ENCHANTMENTS'] = true,
+        ['CHAT_MSG_COMBAT_XP_GAIN'] = true,
+        ['CHAT_MSG_COMBAT_HONOR_GAIN'] = true,
+        ['CHAT_MSG_COMBAT_FACTION_CHANGE'] = true,
+        ['CHAT_MSG_SPELL_TRADESKILLS'] = true,
+        ['CHAT_MSG_SPELL_FAILED_LOCALPLAYER'] = false,
     }
 
-    
+    -- local events = {
+    --     -- Selfbuff anything but buffs than were still on you (except if you gained a stack)
+    --     "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS",
+    --     -- Selfbuff fades (also dispelled?
+    --     "CHAT_MSG_SPELL_AURA_GONE_SELF",
+    --     -- Heal
+    --     "CHAT_MSG_SPELL_SELF_BUFF",
+    --     -- All dot DMG (all sources) vs mobs
+    --     -- "CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE",
+    --     -- All dot DMG (all sources) vs player
+    --     "CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_DAMAGE",
+    --     -- Any dot wearing off
+    --     "CHAT_MSG_SPELL_AURA_GONE_OTHER",
+    -- }
 
-    for _, event in ipairs(events) do
-        combatLogFrame:RegisterEvent(event)
+
+    for key, value in pairs(events) do
+        combatLogFrame:RegisterEvent(key)
     end
 
     combatLogFrame:SetScript("OnEvent", function()
-        local combatLogText = arg1
         print(event)
+        local combatLogText = arg1
         if event == "CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE" then
             handleDotDamage(combatLogText)
         end
