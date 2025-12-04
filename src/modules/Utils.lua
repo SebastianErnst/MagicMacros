@@ -114,7 +114,7 @@ function Utils:stringSplit(str, sep)
     return parts
 end
 
--- From here it'S BetterCharacterStats GetHaste function and really needs to be refactored
+-- TODO: From here it'S BetterCharacterStats GetHaste function and really needs to be refactored
 -------------------------------------------------------------------------------------------
 
 local _G = _G or getfenv(0)
