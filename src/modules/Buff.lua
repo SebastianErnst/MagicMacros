@@ -3,9 +3,14 @@ Buff.__index = Buff
 
 function Buff:new(name)
     local function getBuffIndexByIcon(icon)
-        for i = 0, 32 do
-            if GetPlayerBuffTexture(i) and strfind(GetPlayerBuffTexture(i), icon) then
-                return i
+        local currentAura = nil
+        for i = 0, 32 do            
+            if GetPlayerBuffTexture(i) then
+                local currentAura = Utils:getIconFromTexturePath(GetPlayerBuffTexture(i))
+                currentAura = Utils:decapitalizeIconName(currentAura)
+                if currentAura == icon then
+                    return i
+                end
             end
         end
         return -1

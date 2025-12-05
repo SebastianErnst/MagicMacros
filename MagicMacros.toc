@@ -9,7 +9,7 @@ src\core\Core.lua
 src\core\ZMM_MacroBuilder.lua
 
 # === Data ===
-src\data\NamesMapping.lua
+src\data\AbilitiesByNameMapping.lua
 
 # === Frames ===
 

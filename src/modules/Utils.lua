@@ -1,30 +1,82 @@
 Utils = {}
 Utils.__index = Utils
 
+function Utils:getIconFromTexturePath(texturePath)
+    local icon = Utils:stringSplit(texturePath, "\\")[3]   
+    return icon
+end
 
-function Utils:getSpellInfoByName(name, unit)
-    if unit == "pet" then
-        unit = "pet"
+function Utils:decapitalizeIconName(iconName)
+    local parts = Utils:stringSplit(iconName, "_")
+    local decapitalizedParts = {}
+    for i, part in ipairs(parts) do
+        local firstChar = string.sub(part, 1,1)
+        firstChar = string.lower(firstChar)
+        local rest = string.sub(part, 2)        
+        rest = string.lower(rest)
+        decapitalizedParts[i] = firstChar .. rest
+    end
+    return table.concat(decapitalizedParts, "_")
+end
+
+function Utils:getSpellInfoByName(name, rank, class)
+    if not rank then
+        rank = "max"
     end
 
-    if not unit then
-        unit = "player"
-    end   
+    if not class then
+        local playerClass, _ = UnitClass("player")
+        class = playerClass
+    end
 
-    local spellId = NamesMapping[unit][name].id
-    local duration = NamesMapping[unit][name].duration
-    local _, rank, icon, minRange, maxRange = SpellInfo(spellId)    
+    local spellInfo = nil
+
+    if not AbilitiesByNameMapping[name] then
+        print("Spell info not found for spell: " .. name .. " for class: " .. class)
+    end
+
+    local multipleClassesHaveSpell = AbilitiesByNameMapping[name].multiClass
+
+    if multipleClassesHaveSpell then
+        spellInfo = AbilitiesByNameMapping[name][class]
+    else
+        spellInfo = AbilitiesByNameMapping[name]
+    end
+
     
-    icon = Utils:stringSplit(icon, "\\")[3]
+
+    local icon = spellInfo.icon
+
+    if rank == "max" then
+        rank = spellInfo.ranks.maxRank
+    end
+
+    local currentRank = spellInfo.ranks[rank]
+
+    local id = currentRank.id
+    local castTime = currentRank.castTime
+    local duration = currentRank.duration
+    local minRange = currentRank.minRange
+    local maxRange = currentRank.maxRange
+    local cost = currentRank.cost
+    local resource = currentRank.resource
+    local cooldown = currentRank.cooldown
+    local school = currentRank.school
+    local dispelType = currentRank.dispelType
     
     return {
-        ["id"] = id,
-        ["name"] = name,
-        ["rank"] = rank,
-        ["icon"] = icon,
-        ["minRange"] = minRange,
-        ["maxRange"] = maxRange,
-        ["duration"] = duration
+        id = id,
+        icon = icon,
+        castTime = castTime,
+        duration = duration,
+        minRange = minRange,
+        maxRange = maxRange,
+        cost = cost,
+        resource = resource,
+        cooldown = cooldown,
+        school = school,
+        dispelType = dispelType,
+        rank = rank
     }
 end
 
