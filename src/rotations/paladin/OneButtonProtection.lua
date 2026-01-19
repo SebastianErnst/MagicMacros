@@ -21,7 +21,6 @@ function Paladin:OneButtonProtection()
     end
 
     holyStrike:cast()
-
     holyShield:cast()
 
     if sealOfRighteousnessBuff:isActive() then
@@ -30,13 +29,13 @@ function Paladin:OneButtonProtection()
         sealOfRighteousness:cast()
     end
 
-    if holyStrike:isInRange() then
+    -- if holyStrike:isInRange() then
         consecration:cast()
-    end
+    -- end
 
     exorcism:cast()
 
-    if manaPercentage >= 50 and UnitPlayerOrPetInRaid("player") then
-        greaterBlessingOfSanctuary:cast()
-    end
+    -- if manaPercentage >= 50 and UnitPlayerOrPetInRaid("player") then
+    --     greaterBlessingOfSanctuary:cast()
+    -- end
 end

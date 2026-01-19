@@ -26307,4 +26307,76 @@ AbilitiesByNameMapping = {
             },
         }
     },
+    ["Mark for Death"] = {
+        icon = "ability_creature_cursed_02",
+        ranks = {
+            maxRank = 1,
+            [1] = {
+                id = 52538,
+                castTime = 0,
+                duration = 4,
+                cost = 40,
+                resource = "mana",
+                minRange = 0,
+                maxRange = 5,
+                cooldown = 0,
+                school = "Physical",
+                dispelType = ""
+            },
+        }
+    },
+    ["Preparation"] = {
+        icon = "spell_shadow_antishadow",
+        ranks = {
+            maxRank = 1,
+            [1] = {
+                id = 14185,
+                castTime = 0,
+                duration = 4,
+                cost = 0,
+                resource = "",
+                minRange = 0,
+                maxRange = 0,
+                cooldown = 420,
+                school = "Physical",
+                dispelType = ""
+            },
+        }
+    },
+    ["Ghostly Strike"] = {
+        icon = "spell_shadow_curse",
+        ranks = {
+            maxRank = 1,
+            [1] = {
+                id = 14278,
+                castTime = 0,
+                duration = 7,
+                cost = 40,
+                resource = "Mana",
+                minRange = 0,
+                maxRange = 5,
+                cooldown = 20,
+                school = "Physical",
+                dispelType = ""
+            },
+        }
+    },
+    ["Taste for Blood"] = {
+        icon = "inv_misc_bone_09",
+        ranks = {
+            maxRank = 1,
+            [1] = {
+                id = 14175,
+                castTime = 0,
+                duration = 0,
+                cost = 0,
+                resource = "",
+                minRange = 0,
+                maxRange = 0,
+                cooldown = 0,
+                school = "Physical",
+                dispelType = ""
+            },
+        }
+    },
 }

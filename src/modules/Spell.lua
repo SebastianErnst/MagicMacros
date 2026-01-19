@@ -5,6 +5,10 @@ function Spell:new(name, unit)
     local spellInfo = Utils:getSpellInfoByName(name)
     local icon = spellInfo.icon
     local slotId = Slot:findSlotIndexByIcon(icon)
+     if slotId == -1 then
+            print("Spell not found in action bar: " .. name)
+            return 0
+        end
     local public = {}
 
     function public:getIcon()
@@ -15,10 +19,10 @@ function Spell:new(name, unit)
         CastSpellByName(name)
     end
 
-    function public:getCooldown()
+    function public:getCooldown()       
         local startTime, duration = GetActionCooldown(slotId)
         local cooldown = startTime - GetTime() + duration
-
+        
         return cooldown
     end
 

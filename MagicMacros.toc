@@ -37,6 +37,10 @@ src\rotations\paladin\SealOfRighteousness.lua
 src\rotations\paladin\SealOfWisdom.lua
 src\rotations\paladin\SmartCrusaderStrike.lua
 
+# === Rogue ===
+src\rotations\rogue\Core.lua
+src\rotations\rogue\OneButtonSupport.lua
+
 # === Warrior ===
 src\rotations\warrior\Core.lua
 src\rotations\warrior\OneButtonFuryProt.lua
