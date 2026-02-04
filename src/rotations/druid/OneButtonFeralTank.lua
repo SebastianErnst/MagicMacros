@@ -5,6 +5,8 @@ function Druid:OneButtonFeralTank()
     local rage = UnitMana("player")
     local clearcasting = Buff:new("Clearcasting")
 
+    Combat:startAutoAttack()
+
     savageBite:cast()
 
     if rage >= 32 then
