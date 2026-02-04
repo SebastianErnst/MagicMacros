@@ -4411,7 +4411,7 @@ AbilitiesByNameMapping = {
                 dispelType = ""
             },
         }
-    },    
+    },
     ["Cower"] = {
         icon = "ability_druid_cower",
         ranks = {
@@ -5515,7 +5515,7 @@ AbilitiesByNameMapping = {
                 dispelType = ""
             },
         }
-    },    
+    },
     ["Dash"] = {
         icon = "ability_druid_dash",
         ranks = {
@@ -11347,7 +11347,7 @@ AbilitiesByNameMapping = {
                 dispelType = ""
             },
         }
-    },   
+    },
     ["Growl"] = {
         icon = "ability_physical_taunt",
         ranks = {
@@ -12900,7 +12900,7 @@ AbilitiesByNameMapping = {
                 school = "Holy",
                 dispelType = ""
             },
-            
+
         }
     },
     ["Holy Shock"] = {
@@ -18722,7 +18722,7 @@ AbilitiesByNameMapping = {
                 dispelType = ""
             },
         }
-    },    
+    },
     ["Prowl"] = {
         icon = "ability_ambush",
         ranks = {
@@ -25262,7 +25262,7 @@ AbilitiesByNameMapping = {
                 dispelType = ""
             },
         }
-    },   
+    },
     ["Track Humanoids"] = {
         icon = "spell_holy_prayerofhealing",
         ranks = {
@@ -26376,6 +26376,24 @@ AbilitiesByNameMapping = {
                 cooldown = 0,
                 school = "Physical",
                 dispelType = ""
+            },
+        }
+    },
+    ["Clearcasting"] = {
+        icon = "spell_shadow_manaburn",
+        ranks = {
+            maxRank = 1,
+            [1] = {
+                id = 12536,
+                castTime = 0,
+                duration = 15,
+                cost = 0,
+                resource = "",
+                minRange = 0,
+                maxRange = 0,
+                cooldown = 0,
+                school = "Arcane",
+                dispelType = "Magic"
             },
         }
     },
