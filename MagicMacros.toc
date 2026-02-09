@@ -8,7 +8,6 @@
 src\core\Core.lua
 
 # === Data ===
-src\data\AbilitiesByNameMapping.lua
 
 # === Frames ===
 
