@@ -6,7 +6,6 @@
 
 # === Core ===
 src\core\Core.lua
-src\core\ZMM_MacroBuilder.lua
 
 # === Data ===
 src\data\AbilitiesByNameMapping.lua
