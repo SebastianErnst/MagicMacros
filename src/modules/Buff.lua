@@ -1,26 +1,52 @@
 Buff = {}
 Buff.__index = Buff
 
-function Buff:new(name)
-    local function getBuffIndexByIcon(icon)
-        local currentAura = nil
-        for i = 0, 32 do            
-            if GetPlayerBuffTexture(i) then
-                local currentAura = Utils:getIconFromTexturePath(GetPlayerBuffTexture(i))
-                currentAura = Utils:decapitalizeIconName(currentAura)
-                if currentAura == icon then
-                    return i
-                end
-            end
+function Buff:new(nameOrId, target)
+    target = target or "player"
+    
+    local targetSpellId
+    if type(nameOrId) == "number" then
+        targetSpellId = nameOrId
+    else
+        targetSpellId = GetSpellIdForName(nameOrId)
+        if not targetSpellId or targetSpellId == 0 then
+            error("Buff spell not found: " .. nameOrId)
         end
-        return -1
     end
 
-    local spellInfo = Utils:getSpellInfoByName(name)
-    local icon = spellInfo.icon
-    local buffIndex = getBuffIndexByIcon(icon)
-    local buffApplications = GetPlayerBuffApplications(buffIndex)
-    local buffTimeLeft = GetPlayerBuffTimeLeft(buffIndex)
+    local buffIndex = -1
+    local buffApplications = 0
+    local buffTimeLeft = 0
+
+    if target == "player" and GetPlayerBuffID then
+        for i = 0, 31 do     
+            local buffSpellId = GetPlayerBuffID(i)
+            if buffSpellId == targetSpellId then
+                buffIndex = i
+                buffApplications = GetPlayerBuffApplications(i)
+                buffTimeLeft = GetPlayerBuffTimeLeft(i)
+                break 
+            end
+        end
+    else
+        local i = 1
+        while true do
+            local buffName, rank, icon, count, debuffType, duration, expirationTime = UnitBuff(target, i)
+            if not buffName then break end
+            
+            local buffSpellId = GetSpellIdForName(buffName)
+            if buffSpellId == targetSpellId then
+                buffIndex = i - 1  
+                buffApplications = count or 0
+                if expirationTime and expirationTime > 0 then
+                    buffTimeLeft = expirationTime - GetTime()
+                end
+                break
+            end
+            i = i + 1
+            if i > 32 then break end  
+        end
+    end
 
     local public = {}
 
@@ -32,11 +58,11 @@ function Buff:new(name)
         return buffApplications
     end
 
-    function public.getTimeLeft()
+    function public:getTimeLeft()
         return buffTimeLeft
     end
 
-    function public.isActive()
+    function public:isActive()
         return buffIndex >= 0
     end
 

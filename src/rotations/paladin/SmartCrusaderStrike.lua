@@ -1,6 +1,6 @@
 function Paladin:SmartCrusaderStrike()
     local crusaderStrike = Spell:new("Crusader Strike")
-    local zeal = Buff:new("Zeal")
+    local zeal = Buff:new(51300)
     local holyStrike = Spell:new("Holy Strike")
 
     if not zeal:isActive() then

@@ -1,26 +1,20 @@
 ## Interface: 11200
 ## Title: MagicMacros
 ## Author: Zasamel
-## Version: 0.2.3
+## Version: 0.3.2
 ## Notes: Magical Macros!
 
 # === Core ===
 src\core\Core.lua
-src\core\ZMM_MacroBuilder.lua
 
 # === Data ===
-src\data\AbilitiesByNameMapping.lua
 
 # === Frames ===
 
 # === Modules ===
 src\modules\Buff.lua
 src\modules\Combat.lua
-src\modules\CombatLogHandler.lua
 src\modules\Debuff.lua
-src\modules\Slot.lua
-src\modules\Actionbar.lua
-src\modules\Spellbook.lua
 src\modules\Spell.lua
 src\modules\Utils.lua
 
@@ -33,8 +27,6 @@ src\rotations\hunter\OneButtonPetPullReset.lua
 # === Paladin ===
 src\rotations\paladin\Core.lua
 src\rotations\paladin\OneButtonProtection.lua
-src\rotations\paladin\OneButtonProtectionAoE.lua
-src\rotations\paladin\OneButtonProtectionAoeFarm.lua
 src\rotations\paladin\SealOfRighteousness.lua
 src\rotations\paladin\SealOfWisdom.lua
 src\rotations\paladin\SmartCrusaderStrike.lua
