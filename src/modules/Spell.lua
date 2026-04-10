@@ -5,10 +5,11 @@ function Spell:new(nameOrId, unit)
     local unit = unit or "target"
     
     local spellId
+    
     if type(nameOrId) == "number" then
         spellId = nameOrId
     else
-        spellId = GetSpellIdForName(nameOrId)
+        spellId = GetSpellIdForName(nameOrId)        
         if not spellId or spellId == 0 then
             error("Spell not found: " .. nameOrId)
         end
